@@ -3,23 +3,46 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Hello Ionic</ion-title>
+    <ion-title>A2YA</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
 
-  <h3>Welcome to your first Ionic app!</h3>
+  <ion-list>
 
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
+    <ion-item>
+      <ion-label>
+        <ion-icon name="link"></ion-icon>
+      </ion-label>
+
+      <ion-input type="text" [(ngModel)]="url"></ion-input>
+    </ion-item>
+
+
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="speedometer"></ion-icon>
+      </ion-label>
+
+      <ion-input type="number" max="100" min="0" value="100" [(ngModel)]="speed"
+                 (ngModelChange)="speedChanged($event)"></ion-input>
+
+    </ion-item>
+
+
+
+    <paper-audio-player #audio
+                        class="ion-item media"
+                        [src]="SERVER+'/'+url"
+                        [title]="url"
+    >
+
+    </paper-audio-player>
+
+  </ion-list>
+
 
 </ion-content>

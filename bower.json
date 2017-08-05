@@ -1,0 +1,20 @@
+{
+  "name": "youtube-audio",
+  "description": "An Ionic project",
+  "main": "",
+  "authors": [
+    "Ionic Framework"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-audio-player": "^1.1.1"
+  }
+}

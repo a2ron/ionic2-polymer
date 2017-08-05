@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -9,6 +9,8 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {PolymerModule} from "@codebakery/origami";
+import {IronElementsModule, PaperElementsModule} from "@codebakery/origami/collections";
 
 @NgModule({
   declarations: [
@@ -17,9 +19,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ItemDetailsPage,
     ListPage
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
+    PolymerModule.forRoot(),
     IonicModule.forRoot(MyApp),
+    // Optional modules to help reduce markup complexity
+    IronElementsModule,
+    PaperElementsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
