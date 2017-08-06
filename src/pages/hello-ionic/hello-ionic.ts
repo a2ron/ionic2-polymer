@@ -9,8 +9,11 @@ export class HelloIonicPage {
 
   SERVER: String = "https://youtube.a2ron.com";
 //  SERVER: String = "http://localhost:3000";
-  speed: number = 100;
   url: String = 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ';
+  ready: Boolean = false;
+  audio: any;
+  speed: number = 100;
+
 
   @ViewChild("audio") el: ElementRef;
 
@@ -19,10 +22,21 @@ export class HelloIonicPage {
   }
 
   ngOnInit() {
+    this._checkAudioReadyState();
 
   }
 
-  speedChanged() {
-    this.el.nativeElement.querySelector('audio').playbackRate = (this.speed) / 100
+  speedChanged(speed) {
+    if (this.audio)
+      this.audio.playbackRate = (speed) / 100;
+  }
+
+  private _checkAudioReadyState() {
+    if (!this.audio)
+      this.audio = this.el.nativeElement ? this.el.nativeElement.querySelector('audio') : null;
+    this.ready = this.audio && this.audio.readyState === 4;
+    setTimeout(function () {
+      this._checkAudioReadyState();
+    }.bind(this), 100);
   }
 }

@@ -21,26 +21,35 @@
     </ion-item>
 
 
-
     <ion-item>
       <ion-label>
         <ion-icon name="speedometer"></ion-icon>
       </ion-label>
 
-      <ion-input type="number" max="100" min="0" value="100" [(ngModel)]="speed"
+      <ion-input type="number" min="0"
+                 [(ngModel)]="speed"
                  (ngModelChange)="speedChanged($event)"></ion-input>
 
     </ion-item>
 
 
-
     <paper-audio-player #audio
+                        auto-play
+                        [hidden]="!ready"
                         class="ion-item media"
                         [src]="SERVER+'/'+url"
                         [title]="url"
     >
 
     </paper-audio-player>
+
+    <ion-item style="text-align: center;">
+
+      <ion-spinner
+        [hidden]="ready">
+      </ion-spinner>
+    </ion-item>
+
 
   </ion-list>
 
